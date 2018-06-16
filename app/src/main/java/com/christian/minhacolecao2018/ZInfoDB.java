@@ -3,6 +3,13 @@ package com.christian.minhacolecao2018;
 /*
  * 12-11-15 adicionado ao sistemde exportacao a criacao de 2 arquivos csv Notas e Moedas. 
  * 090216 corrigido falha na troca de telas e organização por pais/ano
+ * 15062018 -> acrescentado na tabela o campo datacadastro. e modificado as funçoes de importar e exportar e o dialog para trabalhar com este campo.
+-> modificado a tela inicial com mais 1 tela de notas brasileiras.
+-> colocado na tela inicial a data de ccompilação do apk
+-> ao importar e exportar aparece um alerta mostrando as informações de notas e moedas no banco.
+-> corrigido o erro ao cadastrar algo a partir da tela inicial
+-> adicionado ao anexo do email o resumoColecao.txt, este arquivo precisa ser colocado na pasta Download do celular antes de importar os dados.
+
  */
 
 import android.annotation.SuppressLint;
