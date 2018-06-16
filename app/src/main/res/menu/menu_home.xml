@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <item android:id="@+id/menu_Adcionar"
+        android:title="Adcionar"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_menu_compose"></item>
+    <item android:id="@+id/menu_VoltarPagina"
+        android:title="Adcionar"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/voltar"></item>
+    <item android:id="@+id/menu_Est"
+        android:title="Estrangeira"
+        ></item>
+    <item android:id="@+id/menu_Nac"
+        android:title="Nacional"
+        ></item>
+    <item android:id="@+id/menu_AnoAZ" 
+        android:title="Organizar por Ano" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_AnoZA" 
+        android:title="Organizar por Ano Z a A" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_ID_AZ" 
+        android:title="Organizar por ID A a Z" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_ID_ZA" 
+        android:title="Organizar por ID Z a A" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+	<item android:id="@+id/menu_Material" 
+        android:title="Organizar por Material" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_Diametro" 
+        android:title="Organizar por Diametro" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    
+</menu>

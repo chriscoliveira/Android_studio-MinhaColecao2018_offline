@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="vazio">CADASTRAR MOEDAS NACIONAIS</string>
+    <string name="app_name">Minha Coleção</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="titulo">Numismatica</string>
+    <string name="nomeapk">Minha Coleção</string>
+    <string name="carregando">Carregando Aplicação</string>
+    <string name="entrar">Entrar</string>
+    <string name="Moedas_Nacionais">Moedas Nacionais</string>
+    <string name="Moedas_Estrangeiras">Moedas Estrangeiras</string>
+    <string name="Notas">Notas</string>
+    <string name="Colecao">Coleção</string>
+    <string name="Ajustes">Ajustes</string>
+    <string name="importar">Importar Dados da Memoria</string>
+    <string name="exportar">Exportar Banco de Dados</string>
+    <string name="email">Enviar por email</string>
+    <string name="apagar">Apagar Bando de Dados</string>
+    <string name="apaga">DELETAR</string>
+    <string name="fechar">FECHAR</string>
+    <string name="numeracao">Numeracao Mundial</string>
+    <string name="voltar">Voltar</string>
+    <string name="identificacaomoedasdeeuro">Identificação Moedas de Euro</string>
+    <string name="LocaisdeCunhagemEuro">Locais de Cunhagem Euro</string>
+    <string name="DatarmoedasJaponesas">Datar moedas Japonesas</string>
+	<string name="ano">ANO</string>
+	<string name="pais">PAIS</string>
+	<string name="valor">VALOR</string>
+	<string name="moeda">MOEDA</string>
+	<string name="material">MATERIAL</string>
+	<string name="diametro">TAMANHO</string>
+	<string name="id">ID</string>
+	<string name="krause">KRAUSE</string>
+	<string name="qualidade">QUALIDADE</string>
+	<string name="anverso">ANVERSO</string>
+	<string name="reverso">REVERSO</string>
+	<string name="detalhe">DETALHE</string>
+	
+	<string name="sepadar">" | "</string>
+	<string name="tipo">TIPO</string>
+	<string name="resumo">RESUMO</string>
+</resources>

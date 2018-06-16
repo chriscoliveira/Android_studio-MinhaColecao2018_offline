@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/menu_Adcionar" 
+        android:title="Adcionar"
+        android:showAsAction="ifRoom" 
+        android:icon="@drawable/ic_menu_compose"></item>
+    <item android:id="@+id/menu_VoltarPagina"
+        android:title="Adcionar"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/voltar"></item>
+    <item android:id="@+id/menu_Est"
+        android:title="Estrangeira"
+        ></item>
+    <item android:id="@+id/menu_Nac"
+        android:title="Nacional"
+        ></item>
+    <item android:id="@+id/menu_AnoAZ" 
+        android:title="Organizar por Ano AZ" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_AnoZA" 
+        android:title="Organizar por Ano ZA" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_PaisAZ" 
+        android:title="Organizar por Pais AZ" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_PaisZA" 
+        android:title="Organizar por Ano ZA" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_Por_Moeda_az" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"
+        android:title="Organizar por Und. Monet."></item>
+    <item android:id="@+id/menu_ID_AZ" 
+        android:title="Organizar por ID AZ" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    <item android:id="@+id/menu_ID_ZA" 
+        android:title="Organizar por ID ZA" 
+        android:icon="@drawable/ic_menu_sort_alphabetically"></item>
+    
+
+</menu>
