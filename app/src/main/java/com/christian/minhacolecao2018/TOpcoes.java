@@ -137,7 +137,9 @@ public class TOpcoes extends Activity {
                         .setMessage(sql)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                finish();
+                                Intent intent = new Intent(TOpcoes.this, TPrincipal.class);
+                                startActivity(intent);
+                                TOpcoes.this.finish();
                             }
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -159,6 +161,9 @@ public class TOpcoes extends Activity {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 zinfodb.deletar(TOpcoes.this);
+                                Intent intent = new Intent(TOpcoes.this, TPrincipal.class);
+                                startActivity(intent);
+                                TOpcoes.this.finish();
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

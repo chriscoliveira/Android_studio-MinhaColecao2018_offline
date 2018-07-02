@@ -9,6 +9,7 @@ package com.christian.minhacolecao2018;
 -> ao importar e exportar aparece um alerta mostrando as informações de notas e moedas no banco.
 -> corrigido o erro ao cadastrar algo a partir da tela inicial
 -> adicionado ao anexo do email o resumoColecao.txt, este arquivo precisa ser colocado na pasta Download do celular antes de importar os dados.
+-> 02072018 alterado o conteudo do email quando enviado para mostrar no corpo do email as quantidades de cada item e adicionado por padrao meu email
 
  */
 
@@ -508,7 +509,7 @@ public class ZInfoDB {
         }
         try {
             FiltrarRegistros(activity, tipo, "", "pais asc, ano asc");
-        }catch (Exception e){
+        } catch (Exception e) {
             return;
         }
         dialog.cancel();
@@ -833,15 +834,39 @@ public class ZInfoDB {
         Date date = new Date();
         String stringDate = DateFormat.getDateTimeInstance().format(date);
         String subject = "Colecao de Moedas - backup";
-        String message = "Segue em anexo um backup dos dados - "+stringDate;
+
+        File sdcard = Environment.getExternalStorageDirectory();
+        File file = new File(sdcard, "/Download/resumoColecao.txt");
+        BufferedReader br = null;
+        String line;
+        String sql = "\n";
+        try {
+            br = new BufferedReader(new FileReader(file));
+
+
+            while ((line = br.readLine()) != null) {
+                //Log.i("sql", "" + line);
+                sql += line + " \n";
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String message = "Segue em anexo um backup dos dados - " + stringDate + " - " + sql;
 
         Uri uri1 = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/Download/bancoMoedas.txt"));
         Uri uri2 = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/Download/bancoMoedas.csv"));
         Uri uri3 = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/Download/bancoNotas.csv"));
         Uri uri4 = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "/Download/resumoColecao.txt"));
 
+        String email = "christian.coliveira@gmail.com";
+
         Intent i = new Intent(Intent.ACTION_SEND_MULTIPLE);
-        i.setType("text/plain");
+        i.setType("*/*");
+
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"christian.coliveira@gmail.com"});
+        //i.putExtra(Intent.EXTRA_EMAIL, email);
         i.putExtra(Intent.EXTRA_SUBJECT, subject);
         i.putExtra(Intent.EXTRA_TEXT, message);
         ArrayList<Uri> uris = new ArrayList<Uri>();
@@ -1007,6 +1032,73 @@ public class ZInfoDB {
         Resumo = Resumo + "Moedas Total = " + cont4 + "   \n";
         Integer total = cont1 + cont4;
         Resumo = Resumo + "Colecao Total = " + total + "   \n";
+
+
+        /*
+        *
+        * procedimento para colocar quantida de pais por pais no arquivo
+        *
+         */
+        Resumo = Resumo + "\n\n Lista de paises \n";
+
+        Integer contagem = 0, pais = 0;
+        int count = 0, countMoeda = 0;
+        Integer paisCont = 0;
+
+        //pega quantidade de cadastros
+        cursor = bancoDados.query(true, NOME_TABELA, null, null, null, "pais", null, "pais asc", null, null);
+        while (cursor.moveToNext()) {
+            contagem++;
+        }
+
+        Log.i("PAIS", "Total " + contagem);
+        String StringPais[] = new String[contagem];
+        String StringPaisContNotas[] = new String[contagem];
+        String StringPaisContMoeda[] = new String[contagem];
+        String StringPaisFinal[] = new String[contagem];
+
+        // pega os paises únicos e armazena em um array
+        Log.i("PAIS", "Total array " + StringPais.length);
+        cursor = bancoDados.query(true, NOME_TABELA, null, null, null, "pais", null, "pais asc", null, null);
+        while (cursor.moveToNext()) {
+            StringPais[pais] = cursor.getString(cursor.getColumnIndex("pais"));
+            Log.i("PAIS", "" + StringPais[pais]);
+            pais++;
+        }
+
+        for (int i = 0; i < pais; i++) {
+            // conta quantas repetiçoes existem de cada um com base no array anterior NOTAS
+            Cursor mCount = bancoDados.rawQuery("select count(*) from Colecao where pais='" + StringPais[i] + "' and tipo='Nota'", null);
+            mCount.moveToFirst();
+            count = mCount.getInt(0);
+            StringPaisContNotas[i] = "" + count;
+            mCount.close();
+        }
+
+
+        for (int i = 0; i < pais; i++) {
+            // conta quantas repetiçoes existem de cada um com base no array anterior Moeda
+            Cursor mCountMoeda = bancoDados.rawQuery("select count(*) from Colecao where pais='" + StringPais[i] + "' and tipo='Moeda'", null);
+            mCountMoeda.moveToFirst();
+            countMoeda = mCountMoeda.getInt(0);
+            StringPaisContMoeda[i] = "" + countMoeda;
+            mCountMoeda.close();
+        }
+
+        //trata as informações em uma linha
+        for (int i = 0; i < pais; i++) {
+            StringPaisFinal[i] = StringPais[i] + "-     Moedas=" + StringPaisContMoeda[i] + "    Notas=" + StringPaisContNotas[i];
+            Resumo = Resumo + "\n" + StringPaisFinal[i];
+        }
+        Log.i("PAIS", "" + StringPaisFinal[3]);
+
+        /*
+        *
+        * Fim do procedimento pais por pais
+        *
+         */
+
+
         FechaBanco();
 
         File arq1;
@@ -1028,4 +1120,6 @@ public class ZInfoDB {
         }
 
     }
+
+
 }
